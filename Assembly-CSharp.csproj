@@ -60,13 +60,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AddPlayerScript.cs" />
+    <Compile Include="Assets\AddRemovePlayerScript.cs" />
+    <Compile Include="Assets\ChatBox.cs" />
+    <Compile Include="Assets\ChatInputField.cs" />
     <Compile Include="Assets\LobbyHandler.cs" />
     <Compile Include="Assets\LobbyScrollWindow.cs" />
     <Compile Include="Assets\PlayerObject.cs" />
     <Compile Include="Assets\Players.cs" />
     <Compile Include="Assets\Scripts\Steamworks.NET\SteamManager.cs" />
     <Compile Include="Assets\SteamScript.cs" />
+    <Compile Include="Assets\TextObjectUtil.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/ball2/Desktop/Repos/Network Test/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

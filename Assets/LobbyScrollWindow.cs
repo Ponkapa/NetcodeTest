@@ -5,29 +5,25 @@ using UnityEngine.UI;
 
 public class LobbyScrollWindow : MonoBehaviour
 {
-    ArrayList texts;
     GameObject scrollViewContent;
+    Dictionary<string, GameObject> steamIdToTextObject;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        texts = new ArrayList();
-        scrollViewContent = gameObject.GetComponentInChildren<ScrollRect>().gameObject;
+        steamIdToTextObject = new Dictionary<string, GameObject>();
+        scrollViewContent = gameObject.GetComponentInChildren<ScrollRect>().content.gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveText(string id)
     {
-        foreach(Text text in texts) {
-        }
+        GameObject text = steamIdToTextObject[id];
+        steamIdToTextObject.Remove(id);
+        Destroy(gameObject);
     }
 
-    public void AddText(string name)
+    public void AddText(string id, string name)
     {
-        GameObject obj = new GameObject();
-        Text text = obj.AddComponent<Text>();
-        text.text = name;
-        obj.transform.SetParent(scrollViewContent.transform);
-        texts.Add(text);
+        GameObject obj = TextObjectUtil.AddTextToGameObject(scrollViewContent, name);
+        steamIdToTextObject.Add(id, obj);
     }
-
 }

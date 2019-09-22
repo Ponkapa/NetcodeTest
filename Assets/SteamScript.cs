@@ -13,7 +13,7 @@ public class SteamScript : MonoBehaviour
         if(SteamManager.Initialized)
         {
             string name = SteamFriends.GetPersonaName();
-            PlayerObject playerObject = new PlayerObject(name);
+            PlayerObject playerObject = new PlayerObject(name, "Test");
             FindObjectOfType<Players>().AddPlayer(playerObject);
         }
         

@@ -7,7 +7,7 @@ public class Players : MonoBehaviour
 {
     public ArrayList players;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         players = new ArrayList();
     }
@@ -21,10 +21,6 @@ public class Players : MonoBehaviour
     public void AddPlayer(PlayerObject player)
     {
         players.Add(player);
-        GameObject obj = new GameObject();
-        Text text = obj.AddComponent<Text>();
-        text.text = player.Name;
-        obj.transform.SetParent(gameObject.transform);
-        text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        FindObjectOfType<LobbyScrollWindow>().AddText(player.SteamId, player.Name);
     }
 }
