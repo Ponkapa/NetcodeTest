@@ -7,6 +7,8 @@ public class LobbyHandler : MonoBehaviour
 {
     protected Callback<LobbyCreated_t> lobbyCreated;
     protected Callback<LobbyEnter_t> lobbyEntered;
+    protected Callback<LobbyDataUpdate_t> lobbyDataUpdated;
+    protected Callback<LobbyChatUpdate_t> lobbyChatUpdated;
     private ulong lobbyId;
     private bool createdLobby;
 
@@ -23,6 +25,8 @@ public class LobbyHandler : MonoBehaviour
         {
             lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
             lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+            lobbyDataUpdated = Callback<LobbyDataUpdate_t>.Create(OnLobbyDataUpdated);
+            lobbyChatUpdated = Callback<LobbyChatUpdate_t>.Create(OnLobbyChatUpdated);
         }
     }
 
@@ -69,8 +73,20 @@ public class LobbyHandler : MonoBehaviour
         Debug.Log("Lobby Entered");
     }
 
-    public void OnLobbyUpdated(LobbyChatUpdate_t callback)
+    public void OnLobbyChatUpdated(LobbyChatUpdate_t callback)
     {
-        Debug.Log("Lobby Updated");
+        Debug.Log("Lobby Chat Updated");
+    }
+
+    public void OnLobbyDataUpdated(LobbyDataUpdate_t callback)
+    {
+        Debug.Log("Lobby Data Updated");
+        Debug.Log("Success: " + callback.m_bSuccess);
+        Debug.Log("LobbyId: " + callback.m_ulSteamIDLobby);
+        Debug.Log("MemberId: " + callback.m_ulSteamIDMember);
+        CSteamID cSteamID = new CSteamID(callback.m_ulSteamIDMember);
+        Debug.Log(cSteamID.IsValid());
+        Debug.Log(SteamFriends.GetFriendPersonaName(cSteamID));
+        Debug.Log(SteamFriends.GetFriendPersonaName(SteamUser.GetSteamID()));
     }
 }
