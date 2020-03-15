@@ -65,6 +65,7 @@
     <Compile Include="Assets\AddRemovePlayerScript.cs" />
     <Compile Include="Assets\ChatBox.cs" />
     <Compile Include="Assets\ChatInputField.cs" />
+    <Compile Include="Assets\JoinLobbyScript.cs" />
     <Compile Include="Assets\LobbyHandler.cs" />
     <Compile Include="Assets\LobbyScrollWindow.cs" />
     <Compile Include="Assets\PlayerObject.cs" />
